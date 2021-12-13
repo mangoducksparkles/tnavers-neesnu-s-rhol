@@ -1,7 +1,8 @@
 import os
+from discord.ext import commands
 import discord
 
-bot = discord.ext.commands.Bot(command_prefix='!', case_insensitive=True)
+bot = commands.Bot(command_prefix='!', case_insensitive=True)
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
