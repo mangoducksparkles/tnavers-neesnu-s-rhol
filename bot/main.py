@@ -11,7 +11,7 @@ async def on_ready():
 
 @bot.command()
 async def c(ctx, *, msg):
-	await ctx.send(str(msg).reverse(), tty=True)
+	await ctx.send(msg[::-1], tty=True)
 	await ctx.message.delete()
 
 if __name__ == "__main__":
