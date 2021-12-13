@@ -1,16 +1,16 @@
 import os
-from discord.ext import commands
+import discord
 
-bot = commands.Bot(command_prefix="!", case_insensitive=true)
-TOKEN = os.getenv("DISCORD_TOKEN")
+bot = discord.ext.commands.Bot(command_prefix='!', case_insensitive=True)
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user.name}({bot.user.id})")
+    print('We have logged in as {0.user}'.format(client))
 
 @bot.command()
 async def c(ctx, *, msg):
-    await ctx.send(msg.reverse(), tty=true)
+    await ctx.send(str(msg).reverse(), tty=True)
 	await ctx.message.delete()
 
 if __name__ == "__main__":
