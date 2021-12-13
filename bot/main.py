@@ -13,7 +13,7 @@ async def on_ready():
 	print('We have logged in as {0.user}'.format(bot))
 
 @bot.command()
-async def join(ctx)
+async def join(ctx):
 	try:
         channel = ctx.message.author.voice.channel
         await channel.connect()
@@ -25,7 +25,7 @@ async def join(ctx)
         return
 
 @bot.command()
-async def leave(ctx)
+async def leave(ctx):
 	try:
         await ctx.voice_client.disconnect(force=True)
 		vc = None
