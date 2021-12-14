@@ -1,4 +1,5 @@
 import os
+import logging
 from discord.ext import commands
 import discord
 from gtts import gTTS
@@ -18,7 +19,7 @@ async def join(ctx):
 		await channel.connect()
 		return
 	except Exception as e:
-		print(e)
+		logging.exception(str(e))
 		await ctx.send("Cannot connect to voice channel")
 		return
 
@@ -28,7 +29,7 @@ async def leave(ctx):
 		await ctx.voice_client.disconnect(force=True)
 		return
 	except Exception as e:
-		print(e)
+		logging.exception(str(e))
 		await ctx.send("Cannot disconnect from voice channel")
 		return
 
@@ -47,7 +48,7 @@ async def c(ctx, *, msg):
 		await ctx.message.delete()
 		return
 	except Exception as e:
-		print(e)
+		logging.exception(str(e))
 		await ctx.send("Could not speak")
 		return
 
