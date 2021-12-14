@@ -44,7 +44,7 @@ async def c(ctx, *, msg):
 			tts = gTTS(msg)
 			bio = BytesIO()
 			tts.write_to_fp(bio)
-			vc.play(discord.FFmpegPCMAudio(bio))
+			vc.play(discord.FFmpegPCMAudio(bio.getvalue()))
 		await ctx.message.delete()
 		return
 	except Exception as e:
