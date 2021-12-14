@@ -37,7 +37,7 @@ async def c(ctx, *, msg):
 	try:
 		msg = msg[::-1]
 		vc = ctx.voice_client
-		if vc is None || !vc.is_connected():
+		if vc is None or !vc.is_connected():
 			await ctx.send(msg, tts=True)
 		else:
 			tts = gTTS(msg)
