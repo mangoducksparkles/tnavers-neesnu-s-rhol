@@ -6,7 +6,6 @@ from io import BytesIO
 
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
 TOKEN = os.getenv('DISCORD_TOKEN')
-vc = None
 
 @bot.event
 async def on_ready():
@@ -17,7 +16,6 @@ async def join(ctx):
 	try:
 		channel = ctx.message.author.voice.channel
 		await channel.connect()
-		vc = channel
 		return
 	except Exception as e:
 		print(e)
@@ -28,7 +26,6 @@ async def join(ctx):
 async def leave(ctx):
 	try:
 		await ctx.voice_client.disconnect(force=True)
-		vc = None
 		return
 	except Exception as e:
 		print(e)
@@ -39,7 +36,8 @@ async def leave(ctx):
 async def c(ctx, *, msg):
 	try:
 		msg = msg[::-1]
-		if vc is None:
+		vc = ctx.voice_client
+		if vc is None || !vc.is_connected():
 			await ctx.send(msg, tts=True)
 		else:
 			tts = gTTS(msg)
